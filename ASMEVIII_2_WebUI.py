@@ -1,8 +1,10 @@
+#programme for determinining whether and indication is acceptable or rejectable with height/length using fracture mechanics analysis data 
+#using ASME VIII Div 2. In lieu of RT inspection. Code is work in progress.
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-# Data from the provided table
+# Data from ASME VIII, Div2. Table for PAUT fracture mechanics comparison using linear interpolation.
 data = {
     0.0: (0.031, 0.034),
     0.05: (0.033, 0.038),
@@ -16,7 +18,7 @@ data = {
     0.45: (0.085, 0.129),
     0.5: (0.087, 0.143)
 }
-
+#linear interpolation - floats due to to nature of classification method
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
